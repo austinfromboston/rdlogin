@@ -1,0 +1,5 @@
+.index.users
+  %ul.standard
+    - @users.each do |user|
+      %li
+        = link_to user.username, edit_user_path(user)

@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+if File.exists?(picnic = File.expand_path(File.dirname(File.expand_path(__FILE__))+'/../vendor/picnic/lib'))
+  $: << picnic
+elsif File.exists?(picnic = File.expand_path(File.dirname(File.expand_path(__FILE__))+'/../../picnic/lib'))
+  $: << picnic
+else
+  require 'rubygems'
+  
+  # make things backwards-compatible for rubygems < 0.9.0
+  unless Object.method_defined? :gem
+    alias gem require_gem
+  end
+  
+  gem 'picnic'
+end
+
+require 'picnic/service_control'
+
+ctl = Picnic::ServiceControl.new('rubycas-server')
+
+ctl.handle_cli_input

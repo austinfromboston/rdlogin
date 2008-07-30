@@ -1,0 +1,5 @@
+.edit.user
+  = error_messages_for :user
+  - form_for @user do |f|
+    = render :partial => 'form', :locals => { :f => f }
+    = f.submit "Edit"

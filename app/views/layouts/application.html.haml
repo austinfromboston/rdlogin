@@ -1,0 +1,11 @@
+!!!
+%head
+  %title
+    = "#{controller.action_name.titleize} - #{controller.controller_name.titleize}"
+%body
+  #container
+    #header
+    #main
+      = yield
+    #footer
+
